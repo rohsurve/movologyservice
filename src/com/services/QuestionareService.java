@@ -25,5 +25,14 @@ public class QuestionareService {
 		return Response.status(200).entity(answer).build();
 
 	}
+	
+	@GET
+	public Response defaultQnAns() {
+
+		String answer = "Default answer";
+
+		return Response.status(200).entity(answer).build();
+
+	}
 
 }
