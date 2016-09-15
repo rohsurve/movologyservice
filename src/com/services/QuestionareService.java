@@ -3,6 +3,7 @@
  */
 package com.services;
 
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -23,9 +24,9 @@ public class QuestionareService {
 	}
 
 	@POST
-	public Response testPost(@QueryParam("q") String q, @QueryParam("Ping") String Ping,
-			@QueryParam("puzzle") String puzzle) {
-		String out = q + Ping + puzzle;
+	public Response testPost(@FormParam("q") String q,
+			@FormParam("puzzle") String puzzle) {
+		String out ="HELLO"+ q  + puzzle;
 		return Response.status(200).entity(out).build();
 	}
 
