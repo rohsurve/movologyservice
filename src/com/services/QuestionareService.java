@@ -20,56 +20,60 @@ public class QuestionareService {
 
 	@POST
 	public Response testPost(@FormParam("q") String q, @FormParam("puzzle") String puzzle) {
-		String out = "HELLO" + q + puzzle;
-		return Response.status(200).entity("OK").build();
-	}
+		
+		String ans = "No answer for this q!!";
 
-	@GET
-	public Response answerQns(@QueryParam("q") String question) {
-		String ans = "No answer for this question!!";
-
-		if ("What is your full name?".equalsIgnoreCase(question)) {
+		if("['q']['Ping']".equalsIgnoreCase(q)){
+			ans = "OK";
+		}
+		else if ("['q']['Name']".equalsIgnoreCase(q)) {
 			ans = "Rohit Surve";
 		}
-		if ("What is you email address?".equalsIgnoreCase(question)) {
+		else if ("['q']['Email']".equalsIgnoreCase(q)) {
 			ans = "rohsurve@iu.edu";
 		}
-		if ("Please provide a phone number we can use to reach you?".equalsIgnoreCase(question)) {
+		else if ("['q']['Phone']".equalsIgnoreCase(q)) {
 			ans = "8123498667";
 		}
-		if ("Which position at Mov-ology are you applying for?".equalsIgnoreCase(question)) {
+		else if ("['q']['Position']".equalsIgnoreCase(q)) {
 			ans = "Sr.Software Engineer";
 
 		}
-		if ("How many years of software development experience do you have?".equalsIgnoreCase(question)) {
+		else if ("['q']['Years']".equalsIgnoreCase(q)) {
 			ans = "7 years";
 
 		}
-		if ("Please provide a URL where we can download your resume and cover letter.".equalsIgnoreCase(question)) {
+		else if ("['q']['Resume']".equalsIgnoreCase(q)) {
 			ans = "rohitsurve.strikingly.com";
 
 		}
-		if ("Which position at Mov-ology are you applying for?".equalsIgnoreCase(question)) {
-			ans = "Sr.Software Engineer";
+		else if ("['q']['Referrer']".equalsIgnoreCase(q)) {
+			ans = "Indeed.com";
 
 		}
-		if ("How many years of software development experience do you have?".equalsIgnoreCase(question)) {
+		else if ("['q']['Name']".equalsIgnoreCase(q)) {
 			ans = "7 years";
 
 		}
-		if ("Please provide a URL where we can download the source code of your resume submission web service."
-				.equalsIgnoreCase(question)) {
+		else if ("['q']['Source']"
+				.equalsIgnoreCase(q)) {
 			ans = "https://github.com/rohsurve/movologyservice";
 		}
-		if ("Can you provide proof of eligibility to work in the US?".equalsIgnoreCase(question)) {
+		else if ("['q']['Status']".equalsIgnoreCase(q)) {
 			ans = "Yes";
 
 		}
-		if ("Please solve this puzzle: 588+169/966".equalsIgnoreCase(question)) {
+		else if ("['q']['Puzzle']".equalsIgnoreCase(q)) {
 			ans = "0.783";
 		}
 
 		return Response.status(200).entity(ans).build();
+		
+	}
+
+	@GET
+	public Response answerQns() {
+		return Response.status(200).entity("Rest Service Works").build();
 
 	}
 
