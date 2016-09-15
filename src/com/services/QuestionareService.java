@@ -24,8 +24,8 @@ public class QuestionareService {
 	}
 	
 	@POST
-	public Response testPost(@QueryParam("q") String question,@QueryParam("puzzle") String puzzle) {
-		String out = question + puzzle;
+	public Response testPost(@QueryParam("q") String question,@QueryParam("url") String url) {
+		String out = question + url;
 		return Response.status(200).entity(out).build();
 	}
 
