@@ -5,6 +5,7 @@ package com.services;
 
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
@@ -15,8 +16,19 @@ import javax.ws.rs.core.Response;
  */
 @Path("/questionsService")
 public class QuestionareService {
-
+	
 	@GET
+	public Response testService() {
+		return Response.status(200).entity("Rest Service Works").build();
+	}
+	
+	@POST
+	public Response testPost(@QueryParam("q") String question,@QueryParam("puzzle") String puzzle) {
+		String out = question + puzzle;
+		return Response.status(200).entity(out).build();
+	}
+
+	@POST
 	public Response answerQns(@QueryParam("q") @DefaultValue("No answer")String question) {
 		String ans = "Please provide Correct question!!";
 
