@@ -19,7 +19,8 @@ public class QuestionareService {
 	
 	@GET
 	public Response testService() {
-		return Response.status(200).entity("Rest Service Works").build();
+		String s="kjkljkljk";
+		return Response.status(200).entity(s).build();
 	}
 	
 	@POST
@@ -28,7 +29,7 @@ public class QuestionareService {
 		return Response.status(200).entity(out).build();
 	}
 
-	@POST
+	/*@POST
 	public Response answerQns(@QueryParam("q") @DefaultValue("No answer")String question) {
 		String ans = "Please provide Correct question!!";
 
@@ -67,5 +68,5 @@ public class QuestionareService {
 		return Response.status(200).entity(ans).build();
 
 	}
-
+*/
 }
