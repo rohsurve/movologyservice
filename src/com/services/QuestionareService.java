@@ -19,7 +19,7 @@ public class QuestionareService {
 
 
 	@POST
-	public Response testPost(@FormParam("q") String q, @FormParam("puzzle") String puzzle) {
+	public Response testPost(@QueryParam("q") String q, @QueryParam("puzzle") String puzzle) {
 		
 		String ans = "No answer for this q!!";
 
