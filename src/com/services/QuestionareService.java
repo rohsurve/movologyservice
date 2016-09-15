@@ -3,7 +3,11 @@
  */
 package com.services;
 
-import javax.ws.rs.FormParam;
+import java.util.Base64;
+
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -64,7 +68,21 @@ public class QuestionareService {
 
 		}
 		else if ("['q']['Puzzle']".equalsIgnoreCase(q)) {
-			ans = "0.783";
+			
+			byte[] decoded = Base64.getDecoder().decode(puzzle);
+			System.out.println(new String(decoded));
+			
+			ScriptEngineManager manager = new ScriptEngineManager();
+			ScriptEngine engine = manager.getEngineByName("js");  
+			Integer result=null;
+			try {
+				 result = (Integer)engine.eval(new String(decoded));
+			} catch (ScriptException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			ans = result.toString();
 		}
 
 		return Response.status(200).entity(ans).build();
